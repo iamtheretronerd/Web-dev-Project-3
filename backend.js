@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  const allowedOrigins = ["http://localhost:3000", "http://localhost:5173"];
+  const allowedOrigins = ["http://localhost:3000", "http://localhost:5174"];
   const origin = req.headers.origin;
   
   if (allowedOrigins.includes(origin)) {
