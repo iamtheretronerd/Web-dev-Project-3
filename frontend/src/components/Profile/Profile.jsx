@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/profile.module.css";
-const API_URL = window.BACKEND_API || 'http://localhost:3001';
-
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 function Profile({ user, onUpdateUser }) {
   const navigate = useNavigate();

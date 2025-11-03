@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/auth.module.css";
-const API_URL = window.BACKEND_API || 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 function Signup({ onLogin }) {
   const [formData, setFormData] = useState({
