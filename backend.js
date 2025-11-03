@@ -40,7 +40,8 @@ app.use((req, res, next) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  const buildDir = path.resolve(__dirname, "frontend", "build");
+  const buildDir = path.resolve(__dirname, "frontend", "dist");
+  console.log("Serving frontend from:", buildDir);
   app.use(express.static(buildDir));
 
   app.get(/^\/(?!api).*/, (req, res) => {
