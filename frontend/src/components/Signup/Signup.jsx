@@ -1,73 +1,77 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styles from '../../styles/auth.module.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "../../styles/auth.module.css";
+const API_URL = window.BACKEND_API || 'http://localhost:3001';
 
 function Signup({ onLogin }) {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     // Validate passwords match
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       return;
     }
 
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/signup', {
-        method: 'POST',
+      const response = await fetch(`${API_URL}/api/auth/signup`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
           password: formData.password,
-          profileImage: `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(formData.name)}`
-        })
+          profileImage: `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(formData.name)}`,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Signup failed');
+        throw new Error(data.message || "Signup failed");
       }
 
       if (data.success) {
         // After successful signup, log the user in
-        const loginResponse = await fetch('http://localhost:3001/api/auth/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+        const loginResponse = await fetch(
+          `${API_URL}api/auth/login`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: formData.email,
+              password: formData.password,
+            }),
           },
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password
-          })
-        });
+        );
 
         const loginData = await loginResponse.json();
         if (loginData.success) {
@@ -85,11 +89,13 @@ function Signup({ onLogin }) {
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
         <h2 className={styles.title}>Join LevelUp!</h2>
-        <p className={styles.subtitle}>Start your skill mastery journey today</p>
-        
+        <p className={styles.subtitle}>
+          Start your skill mastery journey today
+        </p>
+
         <form onSubmit={handleSubmit} className={styles.form}>
           {error && <div className={styles.error}>{error}</div>}
-          
+
           <div className={styles.inputGroup}>
             <label htmlFor="name">Full Name</label>
             <input
@@ -142,12 +148,12 @@ function Signup({ onLogin }) {
             />
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className={styles.submitButton}
             disabled={loading}
           >
-            {loading ? 'Creating account...' : 'Sign Up'}
+            {loading ? "Creating account..." : "Sign Up"}
           </button>
         </form>
 

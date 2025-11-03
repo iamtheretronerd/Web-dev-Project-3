@@ -1,40 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styles from '../../styles/Auth.module.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "../../styles/auth.module.css";
+
+const API_URL = window.BACKEND_API || 'http://localhost:3001';
 
 function Login({ onLogin }) {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
-        method: 'POST',
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+        throw new Error(data.message || "Login failed");
       }
 
       if (data.success) {
@@ -51,10 +53,10 @@ function Login({ onLogin }) {
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
         <h2 className={styles.title}>LEVEL UP</h2>
-        
+
         <form onSubmit={handleSubmit} className={styles.form}>
           {error && <div className={styles.error}>{error}</div>}
-          
+
           <div className={styles.inputGroup}>
             <label htmlFor="email">Email</label>
             <input
@@ -81,12 +83,12 @@ function Login({ onLogin }) {
             />
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className={styles.submitButton}
             disabled={loading}
           >
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 

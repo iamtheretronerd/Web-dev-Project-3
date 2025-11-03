@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from '../../styles/dashboard.module.css';
+import styles from "../../styles/dashboard.module.css";
 
 function Dashboard({ user }) {
   return (
@@ -7,11 +6,13 @@ function Dashboard({ user }) {
       <div className={styles.header}>
         <div className={styles.userSection}>
           {user?.profileImage && (
-            <img 
-              src={user.profileImage} 
-              alt={user.name} 
+            <img
+              src={user.profileImage}
+              alt={user.name}
               className={styles.avatar}
-              onError={(e) => {e.target.style.display = 'none'}}
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
             />
           )}
           <div>
@@ -28,13 +29,10 @@ function Dashboard({ user }) {
           <p className={styles.emptyText}>
             Choose a skill and begin your personalized learning path
           </p>
-          <button className={styles.createButton}>
-            Create New Journey
-          </button>
+          <button className={styles.createButton}>Create New Journey</button>
         </div>
 
-        <div className={styles.journeyGrid}>
-        </div>
+        <div className={styles.journeyGrid}></div>
       </div>
     </div>
   );
