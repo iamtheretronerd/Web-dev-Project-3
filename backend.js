@@ -43,10 +43,8 @@ if (process.env.NODE_ENV === "production") {
   const buildDir = path.resolve(__dirname, "frontend", "build");
   app.use(express.static(buildDir));
 
-  app.get("*", (req, res) => {
-    if (!req.path.startsWith("/api")) {
-      res.sendFile(path.resolve(buildDir, "index.html"));
-    }
+  app.get(/^\/(?!api).*/, (req, res) => {
+    res.sendFile(path.join(buildDir, "index.html"));
   });
 }
 
