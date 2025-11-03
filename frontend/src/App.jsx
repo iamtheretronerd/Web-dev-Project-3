@@ -9,7 +9,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Navigation from "./components/Navigation/Navigation";
-import styles from "./styles/App.module.css";
+import styles from "./styles/app.module.css";
 import Profile from "./components/Profile/Profile";
 
 function App() {
