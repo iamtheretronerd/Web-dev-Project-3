@@ -1,6 +1,13 @@
 import styles from "../../styles/dashboard.module.css";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard({ user }) {
+  const navigate = useNavigate();
+
+  const handleCreateClick = () => {
+    navigate("/create");
+  };
+
   return (
     <div className={styles.dashboardContainer}>
       <div className={styles.header}>
@@ -29,7 +36,13 @@ function Dashboard({ user }) {
           <p className={styles.emptyText}>
             Choose a skill and begin your personalized learning path
           </p>
-          <button className={styles.createButton}>Create New Journey</button>
+          <button
+            className={styles.createButton}
+            type="button"
+            onClick={handleCreateClick}
+          >
+            Create New Journey
+          </button>
         </div>
 
         <div className={styles.journeyGrid}></div>

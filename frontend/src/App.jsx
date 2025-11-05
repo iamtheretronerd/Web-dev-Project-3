@@ -11,6 +11,8 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Navigation from "./components/Navigation/Navigation";
 import styles from "./styles/app.module.css";
 import Profile from "./components/Profile/Profile";
+import CreateJourney from "./components/CreateJourney/CreateJourney";
+import Game from "./components/Game/Game";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,47 +47,65 @@ function App() {
   return (
     <Router>
       <div className={styles.app}>
-        {user && <Navigation user={user} onLogout={handleLogout} />}
-        <main className={styles.mainContent}>
-          <Routes>
-            <Route
-              path="/login"
-              element={
-                user ? (
-                  <Navigate to="/dashboard" />
-                ) : (
-                  <Login onLogin={handleLogin} />
-                )
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                user ? (
-                  <Navigate to="/dashboard" />
-                ) : (
-                  <Signup onLogin={handleLogin} />
-                )
-              }
-            />
-            <Route
-              path="/dashboard"
-              element={
-                user ? <Dashboard user={user} /> : <Navigate to="/login" />
-              }
-            />
-             <Route 
-              path="/profile" 
-              element={
-                user ? <Profile user={user} onUpdateUser={handleUpdateUser} /> : <Navigate to="/login" />
-              } 
-            />
-            <Route
-              path="/"
-              element={<Navigate to={user ? "/dashboard" : "/login"} />}
-            />
-          </Routes>
-        </main>
+      {user && <Navigation user={user} onLogout={handleLogout} />}
+      <main className={styles.mainContent}>
+        <Routes>
+          <Route
+            path="/login"
+            element={
+              user ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <Login onLogin={handleLogin} />
+              )
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              user ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <Signup onLogin={handleLogin} />
+              )
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              user ? <Dashboard user={user} /> : <Navigate to="/login" />
+            }
+          />
+          {/* Route for creating a new journey */}
+          <Route
+            path="/create"
+            element={
+              user ? <CreateJourney user={user} /> : <Navigate to="/login" />
+            }
+          />
+          {/* Temporary Game route placeholder. This will be replaced by the actual game screen. */}
+          <Route
+            path="/game"
+            element={
+              user ? <Game user={user} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              user ? (
+                <Profile user={user} onUpdateUser={handleUpdateUser} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/"
+            element={<Navigate to={user ? "/dashboard" : "/login"} />}
+          />
+        </Routes>
+      </main>
       </div>
     </Router>
   );
