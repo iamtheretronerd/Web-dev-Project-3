@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import authRoute from "./routes/authRoute.js";
+import gameDataRoute from "./routes/gameDataRoute.js";
 
 dotenv.config();
 
@@ -50,6 +51,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.use("/api/auth", authRoute);
+
+// Routes for game data (learning journeys)
+app.use("/api/gameData", gameDataRoute);
 
 app.get("/api/health", (req, res) => {
   res.json({

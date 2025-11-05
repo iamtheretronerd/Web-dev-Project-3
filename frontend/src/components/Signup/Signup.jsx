@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../../styles/auth.module.css";
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 function Signup({ onLogin }) {
   const [formData, setFormData] = useState({
@@ -47,7 +47,9 @@ function Signup({ onLogin }) {
           name: formData.name,
           email: formData.email,
           password: formData.password,
-          profileImage: `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(formData.name)}`,
+          profileImage: `https://api.dicebear.com/7.x/pixel-art/svg?seed=${encodeURIComponent(
+            formData.name,
+          )}`,
         }),
       });
 
@@ -59,19 +61,16 @@ function Signup({ onLogin }) {
 
       if (data.success) {
         // After successful signup, log the user in
-        const loginResponse = await fetch(
-          `${API_URL}api/auth/login`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: formData.email,
-              password: formData.password,
-            }),
+        const loginResponse = await fetch(`${API_URL}/api/auth/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        );
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
 
         const loginData = await loginResponse.json();
         if (loginData.success) {
@@ -89,9 +88,7 @@ function Signup({ onLogin }) {
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
         <h2 className={styles.title}>Join LevelUp!</h2>
-        <p className={styles.subtitle}>
-          Start your skill mastery journey today
-        </p>
+        <p className={styles.subtitle}>Start your skill mastery journey today</p>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {error && <div className={styles.error}>{error}</div>}
