@@ -9,10 +9,10 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
  * CreateJourney component
  *
  * This page allows a logged-in user to create a new learning journey. The
- * user selects a skill, experience level, optional time commitment and a
- * personal goal. Upon submission, the data is sent to the backend to create
- * a new document in the "gameData" collection. The inserted document ID is
- * then used to redirect the user to the game screen (handled by the
+ * user enters a skill, selects an experience level, optional time commitment
+ * and a personal goal. Upon submission, the data is sent to the backend to
+ * create a new document in the "gameData" collection. The inserted document ID
+ * is then used to redirect the user to the game screen (handled by the
  * game page implemented elsewhere).
  *
  * Props:
@@ -42,7 +42,7 @@ function CreateJourney({ user }) {
     setLoading(true);
     try {
       // Determine the user's identifier. Login responses include _id, but
-      // Fall back to id if present.
+      // fall back to id if present.
       const userId = user?._id || user?.id || user?.userId || null;
       if (!userId) {
         throw new Error(
@@ -90,22 +90,15 @@ function CreateJourney({ user }) {
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputGroup}>
             <label htmlFor="skill">Skill</label>
-            <select
+            <input
+              type="text"
               id="skill"
               name="skill"
               value={formData.skill}
               onChange={handleChange}
               required
-            >
-              <option value="" disabled>
-                Select a skill
-              </option>
-              <option value="Cooking">Cooking</option>
-              <option value="Public Speaking">Public Speaking</option>
-              <option value="Memory Training">Memory Training</option>
-              <option value="DIY Crafts">DIY Crafts</option>
-              <option value="Other">Other</option>
-            </select>
+              placeholder="e.g. Cooking, Guitar, Chess"
+            />
           </div>
           <div className={styles.inputGroup}>
             <label htmlFor="level">Experience Level</label>
