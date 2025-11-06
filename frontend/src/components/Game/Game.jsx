@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import styles from "../../styles/Game.module.css";
+import styles from "../../styles/game.module.css";
 
 // Standardize env var (Vite)
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
