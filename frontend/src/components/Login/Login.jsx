@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import styles from "../../styles/auth.module.css";
+import styles from "../../styles/login.module.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 

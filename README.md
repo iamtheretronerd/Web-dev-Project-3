@@ -1,13 +1,14 @@
-# LevelUp — AI-Powered Skill Journey Tracker  
+# LevelUp AI-Powered Skill Journey Tracker
+
 **Web Development Project 3 — Northeastern University**
 
 ---
 
 ## 📌 Author & Class Info
 
-- **Authors:** Hemang Murugan & Adrian Halgas  
-- **Class:** Web Development — Northeastern University  
-- **Date:** 11 October 2025  
+- **Authors:** Hemang Murugan & Adrian Halgas
+- **Class:** Web Development — Northeastern University
+- **Date:** 11 October 2025
 - [Class Link](https://johnguerra.co/classes/webDevelopment_online_fall_2025/)
 
 ---
@@ -16,7 +17,7 @@
 
 **An AI-Powered Skill Journey Tracker and Adaptive Learning App**
 
-**LevelUp** is a full-stack web application where users can create learning journeys to master new skills. The app uses **Google Gemini AI** to generate personalized challenges (quests) that evolve based on the user's progress and feedback.  
+**LevelUp** is a full-stack web application where users can create learning journeys to master new skills. The app uses **Google Gemini AI** to generate personalized challenges (quests) that evolve based on the user's progress and feedback.
 
 This project is built using **Node + Express**, **MongoDB**, and **React (Hooks)**. The backend manages CRUD operations for users and learning journeys, while the frontend dynamically renders progress using client-side rendering.
 
@@ -67,20 +68,22 @@ This project is built using **Node + Express**, **MongoDB**, and **React (Hooks)
 
    Create `.env` files in both backend and frontend folders.
 
-   **Backend (.env)**  
+   **Backend (.env)**
+
    ```env
    MONGODB_URI=<your MongoDB URI>
    PORT=3001
    GEMINI_API_KEY=<gemini api key>
    ```
 
-   **Frontend (.env)**  
+   **Frontend (.env)**
+
    ```env
    VITE_API_URL=https://web-dev-project-3.onrender.com
    ```
 
 5. **Access the app**
-   - Local Development: [http://localhost:5173](http://localhost:5173)  
+   - Local Development: [http://localhost:5173](http://localhost:5173)
    - Deployment: [https://web-dev-project-3.onrender.com/dashboard](https://web-dev-project-3.onrender.com/dashboard)
 
 ---
@@ -93,37 +96,33 @@ This project is built using **Node + Express**, **MongoDB**, and **React (Hooks)
 
 ## 📋 Assignment Rubric Checklist
 
-| **Criterion** | **Status** | **Notes / Evidence** |
-| :------------- | :--------: | :------------------- |
-| **Design document including at least:** | ⚙️ Pending | Design doc with personas, stories, and mockups will be added. |
-| – Project description | ⚙️ Pending | To be detailed in design document. |
-| – User Personas | ⚙️ Pending | Will include 2–3 realistic personas (e.g., student, hobbyist). |
-| – User stories | ⚙️ Pending | Example: “As a learner, I can create a skill journey to improve at chess.” |
-| – Design mockups | ⚙️ Pending | Screenshots and Figma wireframes will be added. |
-| **Does the app accomplish all approved requirements?** | ✅ | [Live App on Render](https://web-dev-project-3.onrender.com/dashboard) fully functional with CRUD and AI level generation. |
-| **Is the app usable / includes instructions?** | ✅ | Detailed instructions provided in this README. |
-| **Is the app actually useful?** | ✅ | Encourages users to gamify their learning progress with AI feedback. |
-| **ESLint config (no errors)** | ✅ | [eslint.config.js](./eslint.config.js) passes cleanly. |
-| **Code properly organized (components, DB, CSS folders)** | ✅ | Clear structure:<br>• `/backend/routes` — REST APIs<br>• `/backend/db/myMongoDB.js` — Mongo wrapper<br>• `/frontend/src/components` — React components<br>• `/frontend/src/styles` — CSS Modules |
-| **Implements ≥ 3 React Components (using hooks)** | ✅ | Uses 7 components built with hooks:<br>• `Login.jsx`, `Signup.jsx`, `Dashboard.jsx`, `Profile.jsx`, `Game.jsx`, `Navigation.jsx`, `CreateJourney.jsx`.<br>Each uses `useState`, `useEffect`, and `useNavigate` for state & routing. |
-| **Each React Component saved in its own file** | ✅ | [frontend/src/components/](./frontend/src/components) — Each component has a separate `.jsx` file. |
-| **Project deployed publicly & functional** | ✅ | [Deployed App](https://web-dev-project-3.onrender.com/dashboard) on Render. |
-| **Uses ≥2 Mongo Collections with full CRUD** | ✅ | `users`, `gameData`, `levels` collections implemented under `/backend/routes`. |
-| **Database populated with ≥1k synthetic records** | ⚙️ Pending | Will populate via `seed.js`. |
-| **Uses Node + Express** | ✅ | [backend.js](./backend/backend.js) entrypoint confirms Express server. |
-| **All code formatted with Prettier** | ✅ | `.prettierrc` applied project-wide. |
-| **No non-standard HTML tags used** | ✅ | Semantic tags only; verified via ESLint. |
-| **CSS organized by components** | ✅ | [frontend/src/styles](./frontend/src/styles):<br>Each React component imports its own `.module.css` file for scoped styling. |
-| **Clear and descriptive README** | ✅ | Includes all required sections, screenshots, and links. |
-| **No exposed credentials** | ✅ | Secrets managed in `.env` and ignored in `.gitignore`. |
-| **Separate package.json for backend & frontend** | ✅ | [Backend package.json](./backend/package.json), [Frontend package.json](./frontend/package.json). |
-| **Uses MIT license** | ✅ | [LICENSE](./LICENSE) included. |
-| **No leftover code (favicon, unused routes)** | ✅ | No leftover code. |
-| **Google Form submission correct** | ⚙️ Pending | To be completed with working links and thumbnail. |
-| **Short public narrated video demo** | ⚙️ Pending | Video to be recorded post submission. |
-| **Code frozen 24h before class** | ⚙️ Pending | Final freeze planned before submission deadline. |
-| **Defines PropTypes for every React component** | ✅ | All components define PropTypes for validation. |
-| **Does not use axios / mongoose / cors / prohibited libraries** | ✅ | Only uses native `fetch()` and official MongoDB driver. |
+| **Criterion**                                                   | **Status** | **Notes / Evidence**                                                                                                                                                                                                                |
+| :-------------------------------------------------------------- | :--------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Design document**                                             |     ✅     | [Design Document](./submissions/designdocument.pdf)                                                                                                                                                                                 |
+| **Does the app accomplish all approved requirements?**          |     ✅     | [Live App on Render](https://web-dev-project-3.onrender.com/dashboard) fully functional with CRUD and AI level generation.                                                                                                          |
+| **Is the app usable / includes instructions?**                  |     ✅     | Detailed instructions provided in this README.                                                                                                                                                                                      |
+| **Is the app actually useful?**                                 |     ✅     | Encourages users to gamify their learning progress with AI feedback.                                                                                                                                                                |
+| **ESLint config (no errors)**                                   |     ✅     | [eslint.config.js](./eslint.config.js) passes cleanly.                                                                                                                                                                              |
+| **Code properly organized (components, DB, CSS folders)**       |     ✅     | Clear structure:<br>• `/backend/routes` — REST APIs<br>• `/backend/db/myMongoDB.js` — Mongo wrapper<br>• `/frontend/src/components` — React components<br>• `/frontend/src/styles` — CSS Modules                                    |
+| **Implements ≥ 3 React Components (using hooks)**               |     ✅     | Uses 7 components built with hooks:<br>• `Login.jsx`, `Signup.jsx`, `Dashboard.jsx`, `Profile.jsx`, `Game.jsx`, `Navigation.jsx`, `CreateJourney.jsx`.<br>Each uses `useState`, `useEffect`, and `useNavigate` for state & routing. |
+| **Each React Component saved in its own file**                  |     ✅     | [frontend/src/components/](./frontend/src/components) — Each component has a separate `.jsx` file.                                                                                                                                  |
+| **Project deployed publicly & functional**                      |     ✅     | [Deployed App](https://web-dev-project-3.onrender.com/dashboard) on Render.                                                                                                                                                         |
+| **Uses ≥2 Mongo Collections with full CRUD**                    |     ✅     | `users`, `gameData`, `levels` collections implemented under `/backend/routes`.                                                                                                                                                      |
+| **Database populated with ≥1k synthetic records**               |     ✅     | [Verify](https://web-dev-project-3.onrender.com/api/levels/count)                                                                                                                                                                   |
+| **Uses Node + Express**                                         |     ✅     | [backend.js](./backend/backend.js) entrypoint confirms Express server.                                                                                                                                                              |
+| **All code formatted with Prettier**                            |     ✅     | `.prettierrc` applied project-wide.                                                                                                                                                                                                 |
+| **No non-standard HTML tags used**                              |     ✅     | Semantic tags only; verified via ESLint.                                                                                                                                                                                            |
+| **CSS organized by components**                                 |     ✅     | [frontend/src/styles](./frontend/src/styles):<br>Each React component imports its own `.module.css` file for scoped styling.                                                                                                        |
+| **Clear and descriptive README**                                |     ✅     | Includes all required sections, screenshots, and links.                                                                                                                                                                             |
+| **No exposed credentials**                                      |     ✅     | Secrets managed in `.env` and ignored in `.gitignore`.                                                                                                                                                                              |
+| **Separate package.json for backend & frontend**                |     ✅     | [Backend package.json](./backend/package.json), [Frontend package.json](./frontend/package.json).                                                                                                                                   |
+| **Uses MIT license**                                            |     ✅     | [LICENSE](./LICENSE) included.                                                                                                                                                                                                      |
+| **No leftover code (favicon, unused routes)**                   |     ✅     | No leftover code.                                                                                                                                                                                                                   |
+| **Google Form submission correct**                              | ⚙️ Pending | To be completed with working links and thumbnail.                                                                                                                                                                                   |
+| **Short public narrated video demo**                            | ⚙️ Pending | Video to be recorded post submission.                                                                                                                                                                                               |
+| **Code frozen 24h before class**                                |     ✅     | Done                                                                                                                                                                                                                                |
+| **Defines PropTypes for every React component**                 |     ✅     | All components define PropTypes for validation.                                                                                                                                                                                     |
+| **Does not use axios / mongoose / cors / prohibited libraries** |     ✅     | Only uses native `fetch()` and official MongoDB driver.                                                                                                                                                                             |
 
 ---
 
@@ -141,6 +140,7 @@ This project used **GenAI tools** (ChatGPT / GPT-5) for:
 **The below prompt is used in the API to generate AI-based idea**
 
 > "Generate ONE specific, actionable task that:
+
     1. Can be completed in ${timeCommitment}
     2. Is appropriate for a ${level} level learner
     3. Builds on previous tasks (if any)
@@ -166,11 +166,17 @@ All outputs were manually reviewed, iterated, and integrated **only after confir
 
 **Hemang Murugan**  
 MS in Computer Science, Northeastern University (Khoury College)  
-Course: _CS5610 — Web Development_  
+Course: _CS5610 — Web Development_
 
 **Adrian Halgas**  
 MS in Computer Science, Northeastern University (Khoury College)  
-Course: _CS5610 — Web Development_  
+Course: _CS5610 — Web Development_
+
+---
+
+## 📜 Copyrights & Attributions
+
+This project does not use any copyrighted data or images.
 
 ---
 
@@ -184,14 +190,14 @@ This project is licensed under the **MIT License** — see the [LICENSE](./LICEN
 
 You can log in with demo accounts or create your own.
 
-| **Email** | **Password** |
-|------------|--------------|
-| ava.johnson@example.com | 12345678 |
-| ethan.lee@example.com | 12345678 |
-| sophia.patel@example.com | 12345678 |
+| **Email**                | **Password** |
+| ------------------------ | ------------ |
+| ava.johnson@example.com  | 12345678     |
+| ethan.lee@example.com    | 12345678     |
+| sophia.patel@example.com | 12345678     |
 
+## Notes
 
-notes
-run eslint . separately in frontend folder and root
-this is because the eslint.config.js is different for both
-ignore if lint error comes in root for the /frontend folder and run separately in frontend folder.
+Run "eslint ." separately in frontend folder and the root
+This is because the eslint.config.js is configured different for both backend and frontend
+Ignore if lint error comes in root for the /frontend folder, to check run separately in frontend folder.

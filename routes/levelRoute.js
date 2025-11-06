@@ -244,4 +244,32 @@ router.get("/history/:journeyId", async (req, res) => {
   }
 });
 
+export const getTotalLevelCount = async () => {
+  const { client, collection } = await levelsDB.connect();
+  try {
+    const count = await collection.countDocuments({});
+    return count;
+  } finally {
+    await client.close();
+  }
+};
+
+router.get("/count", async (req, res) => {
+  try {
+    const total = await getTotalLevelCount();
+    res.json({
+      success: true,
+      message: "Total levels count fetched successfully",
+      count: total,
+    });
+  } catch (error) {
+    console.error("Error fetching levels count:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch levels count",
+      error: error.message,
+    });
+  }
+});
+
 export default router;
