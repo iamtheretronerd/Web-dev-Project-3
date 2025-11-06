@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/dashboard.module.css";
 
-const API_URL = window.REACT_APP_API_URL || "http://localhost:3001";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 function Dashboard({ user }) {
   const navigate = useNavigate();

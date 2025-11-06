@@ -24,7 +24,7 @@ This project is built using **Node + Express**, **MongoDB**, and **React (Hooks)
 
 ## 🎥 Presentation Link
 
-🔗 *Pending (to be added upon submission)*
+🔗 [Presentation](https://docs.google.com/presentation/d/13WzqNQzLpnENGSOkwMHN669cdew9TD9IsD3RQ0g_LS8/edit?usp=sharing)
 
 ---
 
