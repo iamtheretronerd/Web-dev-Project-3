@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
-import PropTypes from "prop-types";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import styles from "../../styles/game.module.css";
 

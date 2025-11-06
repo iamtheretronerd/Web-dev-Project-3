@@ -123,6 +123,7 @@ This project is built using **Node + Express**, **MongoDB**, and **React (Hooks)
 | **Code frozen 24h before class**                                |     ✅     | Done                                                                                                                                                                                                                                |
 | **Defines PropTypes for every React component**                 |     ✅     | All components define PropTypes for validation.                                                                                                                                                                                     |
 | **Does not use axios / mongoose / cors / prohibited libraries** |     ✅     | Only uses native `fetch()` and official MongoDB driver.                                                                                                                                                                             |
+| **W3 Compliance**                                               |     ✅     | Validated from the official webpage.                                                                                                                                                                                                |
 
 ---
 

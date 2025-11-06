@@ -1,10 +1,10 @@
 # Web-dev-Project-3 — Frontend
 
-Short, pragmatic README for the frontend portion of Project 3.
+CHECK README at root for detailed step-by-step information. This is only a quick start guide for the frontend.
 
 ## Overview
 
-Frontend application for the Project 3 web app. Serves UI, communicates with backend API, and provides local development tooling.
+Frontend application for the Project 3 web app. Serves UI, communicates with backend API.
 
 ## Prerequisites
 

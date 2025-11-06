@@ -68,9 +68,6 @@ function CreateJourney({ user }) {
         throw new Error(data.message || "Failed to create journey");
       }
       if (data.success) {
-        // Navigate to the game screen with the new gameData ID. The game
-        // component will read the ID from the query string and load the
-        // corresponding data.
         navigate(`/game?id=${data.gameDataId}`);
       }
     } catch (err) {
