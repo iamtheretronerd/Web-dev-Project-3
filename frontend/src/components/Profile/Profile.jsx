@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/profile.module.css";
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 function Profile({ user, onUpdateUser }) {
   const navigate = useNavigate();
@@ -125,6 +126,56 @@ function Profile({ user, onUpdateUser }) {
     return null;
   }
 
+  const handleDeleteAccount = async () => {
+    if (
+      !window.confirm(
+        "Are you sure you want to delete your account? This action cannot be undone.",
+      )
+    ) {
+      return;
+    }
+
+    if (
+      !window.confirm(
+        "This will permanently delete your account and all your data. Are you absolutely sure?",
+      )
+    ) {
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch(`${API_URL}/api/auth/delete`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: user.email,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to delete account");
+      }
+
+      if (data.success) {
+        // Clear user data and redirect to login
+        localStorage.removeItem("user");
+        onUpdateUser(null);
+        navigate("/login");
+      }
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileCard}>
@@ -207,13 +258,23 @@ function Profile({ user, onUpdateUser }) {
 
           <div className={styles.buttonGroup}>
             {!isEditing ? (
-              <button
-                type="button"
-                onClick={() => setIsEditing(true)}
-                className={styles.editButton}
-              >
-                Edit Profile
-              </button>
+              <>
+                <button
+                  type="button"
+                  onClick={() => setIsEditing(true)}
+                  className={styles.editButton}
+                >
+                  Edit Profile
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteAccount}
+                  className={styles.deleteButton}
+                  disabled={loading}
+                >
+                  Delete Account
+                </button>
+              </>
             ) : (
               <>
                 <button
@@ -240,3 +301,12 @@ function Profile({ user, onUpdateUser }) {
 }
 
 export default Profile;
+Profile.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    name: PropTypes.string,
+    email: PropTypes.string,
+    profileImage: PropTypes.string,
+  }).isRequired,
+  onUpdateUser: PropTypes.func.isRequired,
+};

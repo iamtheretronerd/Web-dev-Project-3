@@ -42,7 +42,8 @@ router.post("/", async (req, res) => {
     if (!userId || !skill || !level) {
       return res.status(400).json({
         success: false,
-        message: "Missing required fields: userId, skill and level are mandatory",
+        message:
+          "Missing required fields: userId, skill and level are mandatory",
       });
     }
 
@@ -109,7 +110,7 @@ router.get("/:id", async (req, res) => {
     } catch (err) {
       return res.status(400).json({
         success: false,
-        message: "Invalid gameData ID",
+        message: `Invalid gameData ID ${err}`,
       });
     }
 
@@ -148,12 +149,13 @@ router.put("/:id", async (req, res) => {
     } catch (err) {
       return res.status(400).json({
         success: false,
-        message: "Invalid gameData ID",
+        message: `Invalid gameData ID ${err}`,
       });
     }
 
-    // Remove fields that should not be updated directly
-    const { userId, createdAt, ...updateData } = req.body;
+    const updateData = { ...req.body };
+    delete updateData.userId;
+    delete updateData.createdAt;
     updateData.updatedAt = new Date();
 
     const result = await gameDataDB.updateDocument(
@@ -194,7 +196,7 @@ router.delete("/:id", async (req, res) => {
     } catch (err) {
       return res.status(400).json({
         success: false,
-        message: "Invalid gameData ID",
+        message: `Invalid gameData ID ${err}`,
       });
     }
     const result = await gameDataDB.deleteDocument({ _id: objectId });

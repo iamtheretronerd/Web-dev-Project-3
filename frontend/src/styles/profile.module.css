@@ -162,13 +162,40 @@
   .profileContainer {
     padding: 16px;
   }
-  
+
   .profileCard {
     padding: 24px;
   }
-  
+
   .profileAvatar {
     width: 80px;
     height: 80px;
   }
+}
+
+/* Add these styles to Profile.module.css */
+
+.deleteButton {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid #dc3545;
+  background: transparent;
+  color: #dc3545;
+}
+
+.deleteButton:hover:not(:disabled) {
+  background: #dc3545;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.deleteButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }

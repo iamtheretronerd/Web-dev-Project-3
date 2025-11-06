@@ -91,6 +91,52 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Delete user account - DELETE /api/auth/delete
+router.delete("/delete", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required",
+      });
+    }
+
+    // Find user to make sure they exist
+    const user = await usersDB.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // Delete the user
+    const result = await usersDB.deleteDocument({ email });
+
+    if (result.deletedCount === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Failed to delete user",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Account deleted successfully",
+    });
+  } catch (error) {
+    console.error("Delete account error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete account",
+      error: error.message,
+    });
+  }
+});
+
 // Update user profile - PUT /api/auth/update
 router.put("/update", async (req, res) => {
   try {

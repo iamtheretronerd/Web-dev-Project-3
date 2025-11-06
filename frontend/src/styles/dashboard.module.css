@@ -1,6 +1,7 @@
+/* Dashboard.module.css - Minimal Design */
 .dashboardContainer {
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
 }
@@ -8,6 +9,9 @@
 /* Header Section */
 .header {
   margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .userSection {
@@ -26,58 +30,54 @@
 
 .greeting {
   font-size: 24px;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
   margin: 0 0 4px 0;
 }
 
 .subtitle {
   font-size: 14px;
-  color: #fff;
+  color: #ffffff;
   margin: 0;
 }
 
-/* Stats Bar */
-.statsBar {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 40px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+.newJourneyButton {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.statValue {
-  font-size: 28px;
-  font-weight: 700;
-  color: #667eea;
-}
-
-.statLabel {
-  font-size: 12px;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.statDivider {
-  width: 1px;
-  height: 40px;
-  background: #e5e5e5;
+.newJourneyButton:hover {
+  background: #5a6dd8;
+  transform: translateY(-1px);
 }
 
 /* Main Content Area */
 .mainContent {
   min-height: 400px;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+  font-size: 16px;
+}
+
+/* Error State */
+.error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 16px;
+  border-radius: 6px;
+  text-align: center;
 }
 
 /* Empty State */
@@ -87,6 +87,11 @@
   padding: 60px 40px;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 .emptyTitle {
@@ -122,32 +127,128 @@
   transform: translateY(-1px);
 }
 
-.createButton:active {
-  transform: translateY(0);
-}
-
-/* Journey Grid - For future use */
+/* Journey Grid */
 .journeyGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  margin-top: 24px;
+}
+
+/* Journey Card */
+.journeyCard {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.journeyCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.journeyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.journeySkill {
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 600;
+  margin: 0;
+}
+
+.deleteButton {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.deleteButton:hover {
+  color: #e53935;
+}
+
+.journeyDetails {
+  margin-bottom: 20px;
+}
+
+.journeyLevel,
+.journeyTime,
+.journeyGoal,
+.journeyDate {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0;
+}
+
+.label {
+  font-weight: 600;
+  color: #444;
+}
+
+.journeyGoal {
+  font-style: italic;
+}
+
+.journeyDate {
+  font-size: 12px;
+  color: #999;
+  margin-top: 12px;
+}
+
+.continueButton {
+  width: 100%;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.continueButton:hover {
+  background: #5a6dd8;
+  transform: translateX(2px);
 }
 
 /* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .newJourneyButton {
+    align-self: stretch;
+  }
+
+  .journeyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .dashboardContainer {
     padding: 20px 16px;
   }
-  
-  .statsBar {
-    padding: 16px;
-  }
-  
-  .statValue {
-    font-size: 24px;
-  }
-  
+
   .emptyState {
     padding: 40px 20px;
   }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "../../styles/auth.module.css";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
@@ -88,7 +89,9 @@ function Signup({ onLogin }) {
     <div className={styles.authContainer}>
       <div className={styles.authCard}>
         <h2 className={styles.title}>Join LevelUp!</h2>
-        <p className={styles.subtitle}>Start your skill mastery journey today</p>
+        <p className={styles.subtitle}>
+          Start your skill mastery journey today
+        </p>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {error && <div className={styles.error}>{error}</div>}
@@ -163,3 +166,6 @@ function Signup({ onLogin }) {
 }
 
 export default Signup;
+Signup.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+};

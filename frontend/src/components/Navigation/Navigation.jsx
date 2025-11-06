@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import styles from "../../styles/navigation.module.css";
 
 function Navigation({ user, onLogout }) {
@@ -82,3 +83,13 @@ function Navigation({ user, onLogout }) {
 }
 
 export default Navigation;
+Navigation.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    name: PropTypes.string,
+    email: PropTypes.string,
+    profileImage: PropTypes.string,
+  }),
+  onLogout: PropTypes.func.isRequired,
+};

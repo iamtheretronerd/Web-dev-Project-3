@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/createJourney.module.css";
 
@@ -153,3 +154,12 @@ function CreateJourney({ user }) {
 }
 
 export default CreateJourney;
+CreateJourney.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    userId: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    name: PropTypes.string,
+    email: PropTypes.string,
+  }).isRequired,
+};
